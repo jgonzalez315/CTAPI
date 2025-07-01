@@ -303,7 +303,7 @@ if pais != "Seleccionar...":
                     producto, precio = productos_lista[fila + i]
                     with cols[i]:
                         try:
-                            ruta = f"imagenes/{producto}.png"
+                            ruta = f"Imagenes/{producto}.png"
                             imagen_b64 = base64.b64encode(open(ruta, "rb").read()).decode()
                             st.markdown(f"""
                                 <div style='text-align: center; padding: 15px; height: 240px; border-radius: 10px; background-color: #f8f9fa; box-shadow: 1px 1px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;'>
@@ -327,7 +327,7 @@ if pais != "Seleccionar...":
         with fila_propina[1]:
             st.markdown(f"""
                 <div style='text-align: center; padding: 15px; height: 240px; border-radius: 10px; background-color: #f8f9fa; box-shadow: 1px 1px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;'>
-                    <img src='data:image/png;base64,{base64.b64encode(open(f"imagenes/Propina.png","rb").read()).decode()}' style='height: 80px; object-fit: contain; margin: auto;' />
+                    <img src='data:image/png;base64,{base64.b64encode(open(f"Imagenes/Propina.png","rb").read()).decode()}' style='height: 80px; object-fit: contain; margin: auto;' />
                     <div style='font-weight: bold; font-size: 16px;'>Propina {simbolo_moneda}</div>
                     <div style='margin-top: 4px;'>Opcional</div>
                 </div>
@@ -414,3 +414,7 @@ if st.session_state.get("transaccion_cancelada"):
                 del st.session_state[key]
         st.session_state["mostrar_boton_nueva_trx"] = True
         st.rerun()
+
+st.write("Archivos en el directorio actual:", os.listdir())
+if os.path.exists("Imagenes"):
+    st.write("Archivos en 'Imagenes':", os.listdir("Imagenes"))
